@@ -12,4 +12,10 @@ wget https://kernel.ubuntu.com/mainline/v6.19/amd64/linux-image-unsigned-6.19.0-
 wget https://kernel.ubuntu.com/mainline/v6.19/amd64/linux-modules-6.19.0-061900-generic_6.19.0-061900.202602082231_amd64.deb  
 ```
 <br>
- <img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/ba6cec8e-1572-457d-acdb-254c67db8802" /><br>
+<img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/ba6cec8e-1572-457d-acdb-254c67db8802" /><br>
+- установка пакетов из текущей директории и проверка <br>
+ ```bash
+ sudo dpkg -i *.deb && ls -al /boot
+ ```
+ 
+<img width="400" height="500" alt="image" src="https://github.com/user-attachments/assets/85d87405-4ea8-4fd6-a7b7-a45ee020d588" /><br>
