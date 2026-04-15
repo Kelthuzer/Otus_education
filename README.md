@@ -44,7 +44,8 @@ lrwxrwxrwx  1 root root       25 Apr 15 10:24 vmlinuz.old -> vmlinuz-6.8.0-110-g
 ```bash
 sudo update-grub
 ```
-```
+
+```результат
 Sourcing file `/etc/default/grub'
 Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-6.19.0-061900-generic
