@@ -59,10 +59,13 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 - выполняю команду ,названия устройств у меня совпадают кроме f, я собираютсь делать рейд 10 поэтому диска 4. 
 <details>
 <summary>mdadm --zero-superblock --force /dev/sd{b,c,d,e}</summary>
+  
+```
 mdadm: Unrecognised md component device - /dev/sdb
 mdadm: Unrecognised md component device - /dev/sdc
 mdadm: Unrecognised md component device - /dev/sdd
 mdadm: Unrecognised md component device - /dev/sde
+```
 </details> <br>
 - ошибка потому что они не размечены (нет ни MBR ни GPT разметки) на "всякий" случай затру диски wipefs -a /dev/sd{b,c,d,e}. Вывод каомнды пустой
 - создавать рейд следующей командой 
@@ -80,6 +83,7 @@ mdadm --create --verbose /dev/md0 -l 10 -n 4 /dev/sd{b,c,d,e}
 <summary>получаем при проверке командой</summary>
 <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/fb49e06d-5c0a-4b66-b8db-0ddc7349c2f3" />
 </details> 
+
 ## Сломать и починить RAID 
 - принудительно помечаю диск как сломанный `mdadm /dev/md0 --fail /dev/sdc`
 
@@ -107,8 +111,10 @@ mdadm: set /dev/sdc faulty in /dev/md0
 размер дисков мальникй поэтому прогресс командой `cat /proc/mdstat` отследить не получилось результат выглядит так:<br>
 <img width="599" height="97" alt="image" src="https://github.com/user-attachments/assets/eb908efb-e8c5-44ef-ad66-d1a36814b19d" /><br>
 <img width="553" height="88" alt="image" src="https://github.com/user-attachments/assets/9fb2b9f2-da80-4cd5-ac43-673d495064d9" />
+
 ## Создать GPT таблицу, пять разделов и смонтировать их в системе
-- создаем GPT 
+- создаем GPT
+  
 ```
 parted -s /dev/md0 mklabel gpt
 ```
@@ -117,6 +123,7 @@ parted -s /dev/md0 mklabel gpt
 я разобью рейд на 4 части для практики<br>
 <img width="650" height="183" alt="image" src="https://github.com/user-attachments/assets/4c1baaaa-ddd1-446b-b8cb-a486d9c4a550" /><br>
 - далее нужно создать файловые системы на созданых нами разделах делаем простым скриптом
+  
 ```
 for i in $(seq 1 4); do sudo mkfs.ext4 /dev/md0p$i; done
 ```
