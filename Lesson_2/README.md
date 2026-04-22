@@ -67,7 +67,7 @@ mdadm: Unrecognised md component device - /dev/sdd
 mdadm: Unrecognised md component device - /dev/sde
 ```
 </details> <br>
-- ошибка потому что они не размечены (нет ни MBR ни GPT разметки) на "всякий" случай затру диски wipefs -a /dev/sd{b,c,d,e}. Вывод каомнды пустой
+- ошибка потому что они не размечены (нет ни MBR ни GPT разметки) на "всякий" случай затру диски ` wipefs -a /dev/sd{b,c,d,e} `. Вывод каомнды пустой
 - создавать рейд следующей командой 
 
 ```
