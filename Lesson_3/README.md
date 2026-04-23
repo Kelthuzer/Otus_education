@@ -50,13 +50,13 @@
   <img width="502" height="218" alt="image" src="https://github.com/user-attachments/assets/42f715f3-00c5-4180-b71e-b44ec81c6f93" />
 
 - теперь нужно вернуть всё что мы перенесли обратно повторяем действия с поправкой на расположение 
-  1. `mkfs.ext4 /dev/ubuntu-vg/ubuntu-lv`
-  2. `mount /dev/ubuntu-vg/ubuntu-lv /mnt`
-  3. `rsync -avxHAX --progress / /mnt/`
-  4. `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` 
-  5. `chroot /mnt/` 
-  6. `grub-mkconfig -o /boot/grub/grub.cfg` 
-  7. `update-initramfs -u` 
+  1) `mkfs.ext4 /dev/ubuntu-vg/ubuntu-lv`
+  2) `mount /dev/ubuntu-vg/ubuntu-lv /mnt`
+  3) `rsync -avxHAX --progress / /mnt/`
+  4) `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done`
+  5) `chroot /mnt/`
+  6) `grub-mkconfig -o /boot/grub/grub.cfg`
+  7) `update-initramfs -u` 
   результат
   <img width="888" height="259" alt="image" src="https://github.com/user-attachments/assets/81df8f2b-8e84-4432-9818-459b77655116" />
 
