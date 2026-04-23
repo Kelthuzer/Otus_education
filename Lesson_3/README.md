@@ -17,6 +17,7 @@
   <img width="599" height="188" alt="image" src="https://github.com/user-attachments/assets/b7ba26e5-2e33-458c-a081-1570801a573a" />
 
 - монтируем `mount /dev/vg_root/lv_root /mnt`
+  
 - копируем `rsync -avxHAX --progress / /mnt/`, ждем завершения. В итоге получим
   ```
   sent 4,125,280,042 bytes  received 2,853,364 bytes  81,745,215.96 bytes/sec
@@ -49,14 +50,15 @@
   результат наших действий 
   <img width="502" height="218" alt="image" src="https://github.com/user-attachments/assets/42f715f3-00c5-4180-b71e-b44ec81c6f93" />
 
-- теперь нужно вернуть всё что мы перенесли обратно повторяем действия с поправкой на расположение 
+- теперь нужно вернуть всё что мы перенесли обратно, повторяем действия 
   1) `mkfs.ext4 /dev/ubuntu-vg/ubuntu-lv`
   2) `mount /dev/ubuntu-vg/ubuntu-lv /mnt`
   3) `rsync -avxHAX --progress / /mnt/`
   4) `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done`
   5) `chroot /mnt/`
   6) `grub-mkconfig -o /boot/grub/grub.cfg`
-  7) `update-initramfs -u` 
+  7) `update-initramfs -u`
+     
   результат
   <img width="888" height="259" alt="image" src="https://github.com/user-attachments/assets/81df8f2b-8e84-4432-9818-459b77655116" />
 
@@ -105,8 +107,46 @@
   ```
   результат
   <img width="730" height="448" alt="image" src="https://github.com/user-attachments/assets/dcb15c46-065e-49a5-a5ea-dfb7ec5db2d5" />
+ 
+## Выделить том под /home
+- начнем с создания LV и ФС и скопируем и смотнтируем все по следуещей процедуре
+  ```bash 
+  lvcreate -n lv_home -L 2G /dev/ubuntu-vg
+  mkfs.ext4 /dev/ubuntu-vg/LogVol_Home
+  mount /dev/ubuntu-vg/LogVol_Home /mnt/
+  cp -aR /home/* /mnt/
+  rm -rf /home/*
+  umount /mnt
+  mount /dev/ubuntu-vg/LogVol_Home /home/
+  ```
+  прописываем в fstab получаем
+  <img width="709" height="385" alt="image" src="https://github.com/user-attachments/assets/2834ce96-5a0b-4d43-a371-52a5dabc68ae" />
 
+##Работа со снапшотами
+- создадим "наполненность" `/home`
+  ```bash
+  touch /home/file{1..50}
+  ```
+- lсоздаем снимок состояния 
+  ```bash
+  lvcreate -L 100MB -s -n home_snap /dev/ubuntu-vg/lv_home
+  ```
+- эмитируем изменения файлов ( я решил удалить четные поэтому начанаю с 2 до 50 с шагом 2)
+  ```bash
+  rm -f /home/file{2..50..2}
+  ```
+как видно остались только файлы с нечетным числом в названии 
+<img width="472" height="514" alt="image" src="https://github.com/user-attachments/assets/a5b49eee-09cb-4c92-86a6-54d8fefaad2f" />
 
+- теперь отмонтируем LV и восстановимся из снапшота 
+<img width="638" height="95" alt="image" src="https://github.com/user-attachments/assets/5b01cdc8-7bce-4358-961a-2abe6e7429d1" />
+- делайм мердж и монтируем обратно
+```bash
+lvconvert --merge /dev/ubuntu-vg/home_snap
+mount /dev/mapper/ubuntu--vg-lv_home /home
+```
+и готоый результат все файлы откатились
+<img width="510" height="906" alt="image" src="https://github.com/user-attachments/assets/d501e636-65fe-4227-a86e-952b05f0da73" />
 
 
 
