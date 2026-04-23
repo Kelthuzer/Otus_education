@@ -23,9 +23,9 @@
 - перепроверяем на всякий случай 
   <img width="800" height="470" alt="image" src="https://github.com/user-attachments/assets/69c7334e-94e3-4c4f-bf48-b2a9ee6edc32" />
 - подготавливаем окружение 
-```bash
-for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done
-```
+  ```bash
+  for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done
+  ```
 - меняем корень `chroot /mnt/`
 - настройка граб `grub-mkconfig -o /boot/grub/grub.cfg`
   <img width="800" height="249" alt="image" src="https://github.com/user-attachments/assets/6a3a2db0-53c3-494f-aca1-7d8f885567ad" />
