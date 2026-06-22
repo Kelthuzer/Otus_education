@@ -39,7 +39,18 @@
 у нас есть рут доступ
 <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/6e08343c-af5b-4793-84db-01f12a7e8510" />
 
-
-
+## Переименовать VG 
+посмотрим что имеем `vgs` и переименум `vgrename ubuntu-vg ubuntu-otus` получим
+<img width="759" height="261" alt="image" src="https://github.com/user-attachments/assets/3d3d5501-92f5-4124-bb5a-48d9edf81de2" />
+отредактируем через `sed`  
+```bash
+sed -i 's/ubuntu--vg/ubuntu--otus/g' /boot/grub/grub.cfg
+```
+до 
+<img width="1903" height="1017" alt="image" src="https://github.com/user-attachments/assets/f94c6eb3-2982-424f-8d23-bd028b04762b" />  
+после  
+<img width="1903" height="1017" alt="image" src="https://github.com/user-attachments/assets/4244e82e-99fc-4db4-88a8-f5ffae6db080" />
+результат  
+<img width="407" height="53" alt="image" src="https://github.com/user-attachments/assets/e2bd73ad-e03e-40f8-bea4-aa98da3da043" />
 
 
