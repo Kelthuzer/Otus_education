@@ -56,9 +56,20 @@ Description=Run watchlog script every 30 second
 [Timer]
 # Run every 30 second
 OnUnitActiveSec=30
-Unit=watchlog.service #название нишего юнита
+Unit=watchlog.service
 
 [Install]
 WantedBy=multi-user.target
 EOF
-```  
+```
+- обновим настройки и запустим наш новый сервис
+```bash
+systemctl daemon-reload
+systemctl start watchlog.service
+systemctl start watchlog.timer
+systemctl status watchlog.timer
+```
+<img width="795" height="276" alt="image" src="https://github.com/user-attachments/assets/858a64e0-e6a7-4e60-88fe-6edcf0d63790" />  
+## 
+
+
