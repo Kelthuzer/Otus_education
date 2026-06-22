@@ -5,7 +5,7 @@
 nano /etc/default/watchlog
 ```  
 наполним его слудющим содрежанием с коментариями для того чтоб потом вспомнить что это и зачем  
-```bash 
+```bash  
 # Configuration file for my watchlog service
 # Place it to /etc/default
 
@@ -17,7 +17,7 @@ LOG=/var/log/watchlog.log
 
 создадим файл лога `echo "test line" >> /var/log/watchlog.log && echo "ALERT NO HUGS" >> /var/log/watchlog.log `  
 - Создадим скрипт `nano /opt/watchlog.sh`
-```bash
+```bash  
 #!/bin/bash
 
 WORD=$1
@@ -34,7 +34,7 @@ fi
 <img width="416" height="267" alt="image" src="https://github.com/user-attachments/assets/07457237-1994-489b-9dfc-d6c81d45c184" />  
 права на исполнение `chmod +x /opt/watchlog.sh`  
 - Создадим юнит 
-```bash
+```bash  
 cat > /etc/systemd/system/watchlog.service <<'EOF'
 [Unit]
 Description=My watchlog service
@@ -46,7 +46,7 @@ ExecStart=/opt/watchlog.sh $WORD $LOG
 EOF
 ```  
 - Создадим дергалку по таймеру  
-```bash
+```bash  
 cat > /etc/systemd/system/watchlog.timer <<'EOF'
 [Unit]
 Description=Run watchlog script every 30 second
