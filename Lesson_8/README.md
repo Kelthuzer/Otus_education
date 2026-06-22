@@ -22,12 +22,24 @@
    <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/9f699a31-6177-4922-8a3b-4787f4a98c7e" />  
    
 ## Попасть в систему без пароля  
+### init=/bin/bash
  - выбираем нужную систму в моем случае Убунту и жмем E 
  редактируем параметры запуска имзенив строку начинаеющуюся с `linux` у брав все начиная с кваейт оставив только следущее
 <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/68ae73cb-848b-4902-a073-13cf27ccec96" />
 жмежм ctrl+x
-<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/8f64b2b9-f587-4e81-a89a-4ffb361d478c" />
 <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/b3d64a29-17e1-4418-a2d8-7e0aa7a521df" />
+## Recovery mode
+ - прерываем загрузки выбиарем Advanced, потом recovery**
+ <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/4a13a39b-0bb0-4c11-b001-b5b39ea4ce82" />
+ <img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/64008657-a95c-4405-920e-5ec8918e12fc" />
+далее для работы с дисками понадобиться активировать пунк нетворк
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/f6ff68a6-2a09-4eeb-a8bf-7eff46868b0b" />
+и выбирам рут  
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/5562e687-e8d1-45fa-9384-db5179cdc1bd" />
+у нас есть рут доступ
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/6e08343c-af5b-4793-84db-01f12a7e8510" />
 
 
-   
+
+
+
