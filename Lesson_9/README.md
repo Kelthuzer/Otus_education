@@ -13,7 +13,7 @@ nano /etc/default/watchlog
 WORD="ALERT"
 LOG=/var/log/watchlog.log
 ```
-<img width="452" height="123" alt="image" src="https://github.com/user-attachments/assets/568091e0-cc83-42a6-a36b-fbeec0a92c03" />
+<img width="452" height="123" alt="image" src="https://github.com/user-attachments/assets/568091e0-cc83-42a6-a36b-fbeec0a92c03" />  
 
 создадим файл лога `echo "test line" >> /var/log/watchlog.log && echo "ALERT NO HUGS" >> /var/log/watchlog.log `  
 - Создадим скрипт `nano /opt/watchlog.sh`
