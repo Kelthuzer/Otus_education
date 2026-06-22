@@ -12,7 +12,9 @@ nano /etc/default/watchlog
 # File and word in that file that we will be monit 
 WORD="ALERT"
 LOG=/var/log/watchlog.log
-```  
+```
+<img width="452" height="123" alt="image" src="https://github.com/user-attachments/assets/568091e0-cc83-42a6-a36b-fbeec0a92c03" />
+
 создадим файл лога `echo "test line" >> /var/log/watchlog.log && echo "ALERT NO HUGS" >> /var/log/watchlog.log `  
 - Создадим скрипт `nano /opt/watchlog.sh`
 ```bash
@@ -28,5 +30,33 @@ then
 else
     exit 0
 fi
+```
+<img width="416" height="267" alt="image" src="https://github.com/user-attachments/assets/07457237-1994-489b-9dfc-d6c81d45c184" />  
+права на исполнение `chmod +x /opt/watchlog.sh`  
+- Создадим юнит 
+```bash
+cat > /etc/systemd/system/watchlog.service <<'EOF'
+[Unit]
+Description=My watchlog service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/watchlog
+ExecStart=/opt/watchlog.sh $WORD $LOG
+EOF
 ```  
-права на исполнение `chmod +x /opt/watchlog.sh`
+- Создадим дергалку по таймеру  
+```bash
+cat > /etc/systemd/system/watchlog.timer <<'EOF'
+[Unit]
+Description=Run watchlog script every 30 second
+
+[Timer]
+# Run every 30 second
+OnUnitActiveSec=30
+Unit=watchlog.service #название нишего юнита
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```  
