@@ -31,7 +31,9 @@ else
     exit 0
 fi
 ```
+
 <img width="416" height="267" alt="image" src="https://github.com/user-attachments/assets/07457237-1994-489b-9dfc-d6c81d45c184" />  
+
 права на исполнение `chmod +x /opt/watchlog.sh`  
 - Создадим юнит 
 ```bash  
