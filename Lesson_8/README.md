@@ -41,7 +41,7 @@
 
 ## Переименовать VG 
 посмотрим что имеем `vgs` и переименум `vgrename ubuntu-vg ubuntu-otus` получим
-<img width="759" height="261" alt="image" src="https://github.com/user-attachments/assets/3d3d5501-92f5-4124-bb5a-48d9edf81de2" />
+<img width="759" height="261" alt="image" src="https://github.com/user-attachments/assets/3d3d5501-92f5-4124-bb5a-48d9edf81de2" />  
 отредактируем через `sed`  
 ```bash
 sed -i 's/ubuntu--vg/ubuntu--otus/g' /boot/grub/grub.cfg
