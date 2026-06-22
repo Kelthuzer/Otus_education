@@ -69,7 +69,9 @@ systemctl start watchlog.service
 systemctl start watchlog.timer
 systemctl status watchlog.timer
 ```
+- трогаем логи `journalctl -n 100 | grep "I found"   
 <img width="795" height="276" alt="image" src="https://github.com/user-attachments/assets/858a64e0-e6a7-4e60-88fe-6edcf0d63790" />  
-## 
+  
+## spawn-fcgi и создать unit-файл
 
 
