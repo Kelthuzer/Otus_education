@@ -170,4 +170,61 @@ KillMode=mixed
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+- создадим конфиги для nginx `nginx-first.conf` и `nginx-second.conf`  
+```bash
+cat > /etc/nginx/nginx-first.conf <<'EOF'
+user www-data;
+worker_processes auto;
+pid /run/nginx-first.pid;
+
+events {
+    worker_connections 768;
+}
+
+http {
+    access_log /var/log/nginx/access-first.log;
+    error_log /var/log/nginx/error-first.log;
+
+    server {
+        listen 9001;
+        server_name localhost;
+
+        location / {
+            return 200 "nginx first\n";
+        }
+    }
+}
+EOF
+
+cat > /etc/nginx/nginx-second.conf <<'EOF'
+user www-data;
+worker_processes auto;
+pid /run/nginx-second.pid;
+
+events {
+    worker_connections 768;
+}
+
+http {
+    access_log /var/log/nginx/access-second.log;
+    error_log /var/log/nginx/error-second.log;
+
+    server {
+        listen 9002;
+        server_name localhost;
+
+        location / {
+            return 200 "nginx second\n";
+        }
+    }
+}
+EOF
+```
+- запустим наши новые сервисы и проверим их самочувствие
+```bash
+systemctl start nginx@first
+systemctl start nginx@second
+systemctl status nginx@first
+systemctl status nginx@second
 ```  
