@@ -132,9 +132,10 @@ systemctl status spawn-fcgi
 systemctl stop apache2
 systemctl disable apache2
 ```  
-- установим Nginx
+- установим Nginx и остановим его сервис чтоб небыло проблем в процессе
 ```bash
 apt install nginx -y
+systemctl stop nginx
 ```
 - Для запуска нескольких экземпляров сервиса модифицируем исходный service для использования различной конфигурации, а также PID-файлов. Для этого создадим новый Unit для работы с шаблонами (/etc/systemd/system/nginx@.service)  
 ```bash
@@ -227,4 +228,9 @@ systemctl start nginx@first
 systemctl start nginx@second
 systemctl status nginx@first
 systemctl status nginx@second
-```  
+```
+<img width="1214" height="612" alt="image" src="https://github.com/user-attachments/assets/64caec58-7de6-4126-baa2-acf50a6093b8" />  
+- проверка по методичке
+<img width="1238" height="64" alt="image" src="https://github.com/user-attachments/assets/cc955e8c-2703-4fe8-9c44-993d3ea7ee4f" />
+
+
