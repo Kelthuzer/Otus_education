@@ -126,7 +126,12 @@ systemctl status spawn-fcgi
 ```   
 <img width="790" height="231" alt="image" src="https://github.com/user-attachments/assets/7d8999cc-0567-49c8-b34a-aa9afb9234f4" />  
 
-## Nginx с разными конфигурационными файлами одновременн  
+## Nginx с разными конфигурационными файлами одновременно  
+- остановим и отключим апач2 чтоб небыло конфликтов
+```bash
+systemctl stop apache2
+systemctl disable apache2
+```  
 - установим Nginx
 ```bash
 apt install nginx -y
