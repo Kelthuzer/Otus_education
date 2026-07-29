@@ -1,4 +1,4 @@
-#Написать bash-скрипт, который ежечасно формирует и отправляет на email отчёт о работе веб-сервера;
+# Написать bash-скрипт, который ежечасно формирует и отправляет на email отчёт о работе веб-сервера;
 
 ```bash
 #!/bin/bash
@@ -71,4 +71,5 @@ send_report() {
 create_report
 send_report
 ```
-
+Cron
+`5 * * * * /usr/local/sbin/web_report.sh >> /var/log/web_report_cron.log 2>&1`
