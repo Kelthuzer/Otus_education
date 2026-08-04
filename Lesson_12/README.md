@@ -86,7 +86,7 @@ done
 ```
 
 ## Демонстарицая работы
-<img width="800" height="700" alt="image" src="https://github.com/user-attachments/assets/33095a0a-6829-4d0a-9875-acca93d308e8" />
-<img width="800" height="700" alt="image" src="https://github.com/user-attachments/assets/231f3011-def1-49b5-b636-e62466ce7866" />
+<img width="1240" height="1024" alt="image" src="https://github.com/user-attachments/assets/33095a0a-6829-4d0a-9875-acca93d308e8" />
+<img width="1240" height="1024" alt="image" src="https://github.com/user-attachments/assets/231f3011-def1-49b5-b636-e62466ce7866" />
 
 
